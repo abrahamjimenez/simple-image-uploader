@@ -1,0 +1,31 @@
+---
+import Logo from "../assets/logo.svg"
+import Moon from "../assets/Moon_fill.svg"
+---
+
+<header>
+    <Logo />
+
+    <div class="moon-container">
+        <Moon />
+    </div>
+</header>
+
+<style lang="scss">
+  $border-color: #e3e3e3;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 20px;
+    border-bottom: 1px solid $border-color;
+  }
+
+.moon-container {
+  outline: 1px solid $border-color;
+  border-radius: 5px;
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+}
+</style>
