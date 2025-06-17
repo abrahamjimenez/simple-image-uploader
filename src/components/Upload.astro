@@ -1,0 +1,51 @@
+---
+import Exit from "../assets/exit.svg"
+---
+
+<div class="upload-container">
+    <Exit />
+    <p class="headline">Drag and drop a file or <span class="accent-primary">browse files</span></p>
+    <p class="accent-secondary">JPG, PNG, or GIF - Max file size 2MB</p>
+</div>
+
+<style lang="scss">
+  $border-color: #e3e3e3;
+  $accent-primary: #3663E4;
+  $accent-secondary: #303541;
+
+  .upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 100%;
+    max-width: 600px;
+    outline: 1px dashed $border-color;
+    outline-offset: -8px;
+    margin: auto;
+    border-radius: 20px;
+    min-height: 300px;
+
+    svg {
+      margin-bottom: 14px;
+    }
+
+    p {
+      margin: 4px 0;
+    }
+  }
+
+  .headline {
+    font-size: 1.1em;
+    font-weight: bold;
+  }
+
+  .accent-primary {
+    color: $accent-primary
+  }
+
+  .accent-secondary {
+    color: $accent-secondary;
+  }
+</style>
