@@ -1,0 +1,16 @@
+$border-color: #e3e3e3;
+$accent-primary: #3663E4;
+$accent-secondary: #303541;
+
+.headline {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.accent-primary {
+  color: $accent-primary
+}
+
+.accent-secondary {
+  color: $accent-secondary;
+}

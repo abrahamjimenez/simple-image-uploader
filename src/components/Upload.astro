@@ -1,12 +1,13 @@
 ---
 import Exit from "../assets/exit.svg"
+import Dropzone from "./react/Dropzone"
 ---
 
 <div class="upload-container">
     <Exit />
-    <p class="headline">Drag and drop a file or <span class="accent-primary">browse files</span></p>
-    <p class="accent-secondary">JPG, PNG, or GIF - Max file size 2MB</p>
+    <Dropzone client:only="react" />
 </div>
+
 
 <style lang="scss">
   $border-color: #e3e3e3;
@@ -34,18 +35,5 @@ import Exit from "../assets/exit.svg"
     p {
       margin: 4px 0;
     }
-  }
-
-  .headline {
-    font-size: 1.1em;
-    font-weight: bold;
-  }
-
-  .accent-primary {
-    color: $accent-primary
-  }
-
-  .accent-secondary {
-    color: $accent-secondary;
   }
 </style>
