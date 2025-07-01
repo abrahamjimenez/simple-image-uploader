@@ -1,40 +1,49 @@
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 import "./Dropzone.scss"
 
 const Dropzone = () => {
-  const onDrop = useCallback(async acceptedFiles => {
-    const file = acceptedFiles[0]
+  const [loading, setLoading] = useState(false)
 
-    console.log("dzfile", file);
+  const onDrop = useCallback(async (acceptedFiles: any[]) => {
+    const file = acceptedFiles[0]
 
     const formData = new FormData();
     formData.append("file", file)
 
-    console.log(`Params: ${file}`)
+    try {
+      setLoading(true)
+      const res = await fetch("/api/upload", { method: "POST", body: formData })
+      const data = await res.json()
 
-    const res = await fetch("/api/upload", { method: "POST", body: formData })
-    const data = await res.json()
-
-    console.log("data", data);
+      console.log(data)
+      setLoading(false)
+    } catch (e) {
+      console.error("Error", e)
+    }
 
   }, [])
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
 
   return (
-    <div {...getRootProps()}>
-      <input {...getInputProps()} />
-      {
-        isDragActive ?
-          <p>Drop the files here ...</p> :
-          <div>
-            <p className="headline">Drag and drop a file or <span
-              className="accent-primary">browse files</span></p>
-            <p className="accent-secondary">JPG, PNG, or GIF - Max file size 2MB</p>
-          </div>
-      }
-    </div>
+    <>
+      {loading ? (<p>Uploading...</p>) : (
+
+        <div {...getRootProps()}>
+          <input {...getInputProps()} />
+          {
+            isDragActive ?
+              <p>Drop the files here ...</p> :
+              <div>
+                <p className="headline">Drag and drop a file or <span
+                  className="accent-primary">browse files</span></p>
+                <p className="accent-secondary">JPG, PNG, or GIF - Max file size 2MB</p>
+              </div>
+          }
+        </div >
+      )}
+    </>
   );
 };
 
